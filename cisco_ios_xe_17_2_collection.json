@@ -1,0 +1,822 @@
+{
+	"info": {
+		"_postman_id": "0a433b1d-afa3-4d49-bcfe-f7e2a3ebf832",
+		"name": "All Operartions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RESTCONF",
+			"item": [
+				{
+					"name": "Operational State interfaces",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/ietf-interfaces:interfaces-state/",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces-state",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read the top level REST resource",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/.well-known/host-meta",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								".well-known",
+								"host-meta"
+							]
+						},
+						"description": "/api is the top level REST resource.\nReading this resource shows what datastores\nare available and what operations are available.\n\nOperations are executed by sending a GET command\nto the URL identified for the operation."
+					},
+					"response": []
+				},
+				{
+					"name": "Read Top Level RESTCONF",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read models implemented by the device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab5400ae-eea0-42f3-90a2-c72369d6a16d",
+								"exec": [
+									"tests[\"Body matches string\"] = responseBody.has(\"interface\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/netconf-state/capabilities",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"netconf-state",
+								"capabilities"
+							]
+						},
+						"description": "This command reads a subset of the information available\nin the ietf-netconf-monitoring model.  The information returned\nis the list of all models, revisions, deviations on this device.\n\nUsing this command is the definitive way to determine the exact\nimplementation and versions on the device.  This information can\nbe used by an intelligent management client to make decisions\non how to use the RESTCONF interface.\n\nThis example for the ietf-interfaces model identifies the \nrevision data as 5.8.2014 and lists specific feature options\nsupported and also the name of the module applying deviations \nthat change the information exposed by the model.\n\n      \"urn:ietf:params:xml:ns:yang:\n      ietf-interfaces?module=ietf-interfaces&\n      revision=2014-05-08&features=pre-provisioning,if-mib,\n      arbitrary-names&deviations=ietf-ip-devs\",\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Read ietf-yang-library",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8fef63d6-d921-4dfc-b8d6-74449dec358c",
+								"exec": [
+									"tests[\"Body matches string\"] = responseBody.has(\"interface\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/ietf-yang-library:modules-state",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"ietf-yang-library:modules-state"
+							]
+						},
+						"description": "This command reads a subset of the information available\nin the ietf-netconf-monitoring model.  The information returned\nis the list of all models, revisions, deviations on this device.\n\nUsing this command is the definitive way to determine the exact\nimplementation and versions on the device.  This information can\nbe used by an intelligent management client to make decisions\non how to use the RESTCONF interface.\n\nThis example for the ietf-interfaces model identifies the \nrevision data as 5.8.2014 and lists specific feature options\nsupported and also the name of the module applying deviations \nthat change the information exposed by the model.\n\n      \"urn:ietf:params:xml:ns:yang:\n      ietf-interfaces?module=ietf-interfaces&\n      revision=2014-05-08&features=pre-provisioning,if-mib,\n      arbitrary-names&deviations=ietf-ip-devs\",\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Read ietf-interfaces list of interfaces",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/ietf-interfaces:interfaces",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces"
+							]
+						},
+						"description": "This message uses the ietf-interface model to read\na list of the names of each interface managed using\nthe model.  The model mapping infrastructure converts\nthe native model configuration into the form defined\nby the ietf-interfaces common model\n\n{\n  \"ietf-interfaces:interfaces\": {\n    \"interface\": [\n      {\n        \"name\": \"FastEthernet0/0/0\"\n      },\n      {\n        \"name\": \"FastEthernet0/0/1\"\n      },\n      {\n        \"name\": \"FastEthernet0/0/2\"\n      },"
+					},
+					"response": []
+				},
+				{
+					"name": "Read ietf-interfaces single interface",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet0/0",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces",
+								"interface=GigabitEthernet0",
+								"0"
+							]
+						},
+						"description": "This reads a single interface from the IOS XE box which already has been configured as a 802.1Q subinterface"
+					},
+					"response": []
+				},
+				{
+					"name": "Configure ietf-interfaces single interface",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ietf-interfaces:interface\": {\n        \"name\": \"GigabitEthernet2\",\n        \"description\": \"Configured by RESTCONF\",\n        \"type\": \"iana-if-type:ethernetCsmacd\",\n        \"enabled\": true,\n        \"ietf-ip:ipv4\": {\n            \"address\": [\n                {\n                    \"ip\": \"10.255.255.1\",\n                    \"netmask\": \"255.255.255.0\"\n                }\n            ]\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet2",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces",
+								"interface=GigabitEthernet2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new loopback interface",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ietf-interfaces:interface\": {\n        \"name\": \"Loopback100\",\n        \"description\": \"Configured by RESTCONF\",\n        \"type\": \"iana-if-type:softwareLoopback\",\n        \"enabled\": true,\n        \"ietf-ip:ipv4\": {\n            \"address\": [\n                {\n                    \"ip\": \"172.16.100.1\",\n                    \"netmask\": \"255.255.255.0\"\n                }\n            ]\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Loopback Interface",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=Loopback100",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"ietf-interfaces:interfaces",
+								"interface=Loopback100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read native device single interface",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"restconf",
+								"data",
+								"Cisco-IOS-XE-native:native",
+								"interface",
+								"GigabitEthernet=2"
+							]
+						},
+						"description": "This reads a single interface from the IOS XE box which already has been configured as a 802.1Q subinterface\nIt uses the native device model (e.g. NED, network element driver)"
+					},
+					"response": []
+				},
+				{
+					"name": "Read native hostname",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/Cisco-IOS-XE-native:native/hostname",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"Cisco-IOS-XE-native:native",
+								"hostname"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve the Server Module Information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4210e81d-fcdc-4aee-a673-208894ed5d38",
+								"exec": [
+									"tests[\"Body matches string\"] = responseBody.has(\"interface\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/ietf-yang-library:modules-state",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"ietf-yang-library:modules-state"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve RESTCONF Monitoring Capabilities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1bc4fa2b-33fc-4d69-a4ce-2357210f6f2d",
+								"exec": [
+									"tests[\"Body matches string\"] = responseBody.has(\"interface\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/ietf-restconf-monitoring:restconf-state/capabilities",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"ietf-restconf-monitoring:restconf-state",
+								"capabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Fields Returned in Response",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2?fields=Cisco-IOS-XE-native:GigabitEthernet(name;description;ip)&depth=unbounded",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"data",
+								"Cisco-IOS-XE-native:native",
+								"interface",
+								"GigabitEthernet=2"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "Cisco-IOS-XE-native:GigabitEthernet(name;description;ip)"
+								},
+								{
+									"key": "depth",
+									"value": "unbounded"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IOS XE Save Configuration RPC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19e62af4-4066-43df-9c55-5c96c69f9790",
+								"exec": [
+									"tests[\"Body matches string\"] = responseBody.has(\"interface\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Cisco123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/restconf/operations/cisco-ia:save-config/",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"restconf",
+								"operations",
+								"cisco-ia:save-config",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
