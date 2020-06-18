@@ -2,4 +2,4 @@
 
 Postman collection for Cisco IOS XE RESTCONF + YANG Model Driven Programmability interface (API)
 
-![](postman.png)
+![](postman2.png)
